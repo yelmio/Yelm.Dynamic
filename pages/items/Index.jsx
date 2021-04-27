@@ -7,7 +7,6 @@ export const getStaticProps = async () => {
 	return {
 		props: { items: data }
 	}
-
 }
 
 export default function Items({ items }) {
