@@ -1,7 +1,8 @@
 @import "variables";
 @import "mixins";
-@import "layouts";
 @import "components";
+@import "fonts";
+@import "utils";
 
 * {
   margin: 0;
@@ -17,8 +18,8 @@ html {
 }
 
 body {
-  // font-family: 'SF Pro Display', sans-serif;
-  // overflow: hidden;
+  font-family: 'Stem', sans-serif;
+  overflow: hidden;
 }
 
 input, textarea, select, button  {

@@ -1,0 +1,10 @@
+.btn {
+  outline: none;
+  border-radius: 30px;
+  color: $color-white;
+  border: 0;
+
+  &_medium {
+    padding: 13px 36px;
+  }
+}

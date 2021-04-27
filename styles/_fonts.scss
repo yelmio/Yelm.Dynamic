@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Stem";
+  src: url("../public/fonts/Stem-Medium.woff");
+  src: local("Stem-Medium"), local("Stem-Medium"),
+  url("../public/fonts/Stem-Medium.woff2") format("woff2"),
+  url("../public/fonts/Stem-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
