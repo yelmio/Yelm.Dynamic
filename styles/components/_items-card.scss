@@ -1,0 +1,18 @@
+.items-card{
+	width: 300px;
+	height: 409px;
+	background: $color-white;
+	box-shadow: 4px 4px 50px rgba(0, 0, 0, 0.05);
+	border-radius: 10px;
+	padding: 16px;
+	margin-right: 30px;
+	margin-bottom: 30px;
+	&__title{
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 22px;
+		color: $color-black;
+		padding-top: 16px;
+		padding-bottom: 17.39px;
+	}
+}
