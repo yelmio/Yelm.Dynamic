@@ -1,6 +1,7 @@
 import '../styles/globals.scss';
 import 'swiper/swiper.scss';
 import Head from "next/head";
+import Default from "../layouts/Default"
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -13,7 +14,9 @@ const MyApp = ({ Component, pageProps }) => {
         <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
       </Head>
-      <Component {...pageProps} />
+      <Default>
+        <Component {...pageProps} />
+      </Default>
     </>
   )
 }
