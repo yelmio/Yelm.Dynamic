@@ -1,6 +1,6 @@
 import Head from "next/head"
 import dynamic from "next/dynamic"
-import { useState } from 'react'
+import { useState } from "react"
 
 const ItemsCard = dynamic(() => import("../components/molecules/ItemsCard"))
 const Tabs = dynamic(() => import("../components/atoms/Tabs"))
