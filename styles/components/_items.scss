@@ -1,4 +1,7 @@
 .items{
-	display: flex;
-	flex-wrap: wrap;
+	margin: 3rem;
+	&__wrapper{
+		display: flex;
+		flex-wrap: wrap;
+	}
 }
