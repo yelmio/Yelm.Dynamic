@@ -1,0 +1,40 @@
+.navigation{
+	height: 100%;
+	display: flex;
+	align-items: center;
+	&__list{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		height: 70%;
+    max-height: 750px;
+		z-index: 10;
+		border-left: 2px solid #E0E0E0;
+		padding-left: 12px;
+	}
+	@for $i from 0 through 5 {
+		.selected-#{$i} {
+			::before{
+				content: "0#{$i}";
+				position: absolute;
+				right: 85px;
+			}
+			a{
+				opacity: 1;
+			}
+		}
+	}
+	&__item{
+		position: relative;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 17px;
+		&::marker{
+			color: $color-primary;
+		}
+		a{
+			opacity: 0.6;
+			color: $color-primary;
+		}
+	}
+}
