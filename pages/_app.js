@@ -1,9 +1,32 @@
 import '../styles/globals.scss';
 import 'swiper/swiper.scss';
 import Head from "next/head";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion"
 import Default from "../layouts/Default"
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps, router }) => {
+  const variants = {
+    enter: () => {
+      return {
+        zIndex: 0,
+        y: -1000,
+        opacity: 0
+      };
+    },
+    center: {
+      zIndex: 1,
+      y: 0,
+      opacity: 1
+    },
+    exit: () => {
+      return {
+        zIndex: 0,
+        y: 1000,
+        opacity: 0
+      };
+    }
+  };
+
   return (
     <>
       <Head>
@@ -15,7 +38,22 @@ const MyApp = ({ Component, pageProps }) => {
         <meta name="msapplication-TileColor" content="#da532c" />
       </Head>
       <Default>
-        <Component {...pageProps} />
+        <AnimatePresence initial={false} exitBeforeEnter>
+          <LazyMotion features={domAnimation}>
+            <m.div
+              key={router.route}
+              variants={variants} 
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                opacity: { duration: 0.3 }, y: { type: "spring", stiffness: 300, damping: 20 },
+              }}
+            >
+              <Component {...pageProps} key={router.route}/>
+            </m.div>
+          </LazyMotion>
+        </AnimatePresence>
       </Default>
     </>
   )

@@ -8,7 +8,7 @@ const Default = ({children}) => {
         <Navigation />  
       </aside>
       <main className="container">
-        {children}
+        { children }
       </main>
     </div>
   )
