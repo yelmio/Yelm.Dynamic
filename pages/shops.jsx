@@ -6,7 +6,6 @@ import axios from "axios"
 const Shops = ({ polygons, error }) => {
 
   const [mapOptions, setMapOptions] = useState({
-    center: [55.749552744318315, 37.62173055468749], 
     zoom: 8, 
     bounds: [[ 55.50090388956289, 37.18227742968749 ], [ 55.99662016956414, 38.06118367968748 ]], 
     controls: ['zoomControl'],
@@ -17,9 +16,14 @@ const Shops = ({ polygons, error }) => {
       strokeWidth: 1,
       strokeStyle: 'shortdash',
     },
+    polygonsData: polygons.length ? polygons.map((e, index) => {
+      return {
+        id: index,
+        polygons: [e.polygons[0].points[0]],
+        shop: [parseFloat(e.shop.latitude), parseFloat(e.shop.longitude)]
+      }
+    }) : '',
   })
-
-  console.log(polygons, error)
 
   return (
   <>
@@ -28,8 +32,17 @@ const Shops = ({ polygons, error }) => {
     </Head>
     <section className="shops">
       <YMaps>
-        <Map state={{ center: mapOptions.center, zoom: mapOptions.zoom, bounds: mapOptions.bounds }} className="shops__map">
-          <Placemark defaultGeometry={[55.751574, 37.573856]} />
+        <Map state={{ center: mapOptions.shopMarker, zoom: mapOptions.zoom, bounds: mapOptions.bounds }} className="shops__map">
+          {
+            mapOptions.polygonsData.map(e => (
+              <Placemark defaultGeometry={ e.shop } key={ e.id }/>
+            ))
+          }
+          {
+            mapOptions.polygonsData.map(e => (
+              <Polygon options={ mapOptions.polygonsOptions } geometry={ e.polygons } key={ e.id }/>
+            ))
+          }
         </Map>
       </YMaps>
     </section>
@@ -47,7 +60,7 @@ export const getStaticProps = async () => {
     const polygons = response.data
     return { props: { polygons } }
   } catch (error) {
-    return { props: {error} }
+    return { props: { error } }
   }
 }
 
