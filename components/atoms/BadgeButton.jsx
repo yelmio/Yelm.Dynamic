@@ -6,7 +6,7 @@ const BadgeButton = (props) => {
   return (
 		<div className="btn_budge">
 			<span onClick={() => {setCount((count <= props.price) ? props.price : count - props.price)}}>-</span>
-			<p>$ {count}</p>
+			<p>$ {parseFloat(count.toFixed(2))}</p>
 			<span onClick={() => {setCount(count + props.price)}}>+</span>
 		</div>
   );
