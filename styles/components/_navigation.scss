@@ -17,7 +17,7 @@
 			::before{
 				content: "0#{$i}";
 				position: absolute;
-				right: 85px;
+				left: -40px;
 			}
 			a{
 				opacity: 1;
@@ -29,10 +29,12 @@
 		font-weight: 500;
 		font-size: 14px;
 		line-height: 17px;
+		transition: all 0.5s;
 		&::marker{
 			color: $color-primary;
 		}
 		a{
+			transition: all 0.5s;
 			opacity: 0.6;
 			color: $color-primary;
 		}

@@ -42,7 +42,7 @@
 
 	&-slide {
 		transition: all .5s ease-in-out;
-		transform: scale(.8);
+		transform: scale(.8) !important;
 	}
 
 	&-slide-next {
