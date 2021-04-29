@@ -1,4 +1,5 @@
 import Link from "../atoms/Link"
+import { useRouter } from "next/router"
 import { useState } from "react"
 
 const Navigation = () => {
@@ -12,6 +13,8 @@ const Navigation = () => {
 	
 	const [selected, setSelected] = useState(0)
 
+	const router = useRouter()
+
 	const handleChange = index => {
 		setSelected(index);
 	}
@@ -20,11 +23,11 @@ const Navigation = () => {
 		<nav className="navigation">
 			<ul className="navigation__list">
 				{links.map((link, index) => {
-				let style = index === selected ? `navigation__item selected-${link.id}` : "navigation__item";
+				// let style = index === selected ? `navigation__item selected-${link.id}` : "navigation__item";
 				return (
 					<li
 						key={index}
-						className={ style }
+						className={ router.pathname == link.path ? `navigation__item selected-${link.id}` : "navigation__item" }
 						onClick={() => handleChange(index)}
 					>
 						<Link link={ link.path } name={ link.name }/>

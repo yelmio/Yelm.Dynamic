@@ -19,15 +19,13 @@ export default function Items() { // Items({items})
 
 	const [items, setGoods] = useState([
     { id: 0, title: "Bx Wooden Table", price: 200},
-		// { id: 1, title: "Bx Wooden Table", price: 200},
-		// { id: 2, title: "Bx Wooden Table", price: 200},
-		// { id: 3, title: "Bx Wooden Table", price: 200},
-		// { id: 4, title: "Bx Wooden Table", price: 200},
-		// { id: 5, title: "Bx Wooden Table", price: 200},
-		// { id: 6, title: "Bx Wooden Table", price: 200},
-		// { id: 7, title: "Bx Wooden Table", price: 200},
-		// { id: 8, title: "Bx Wooden Table", price: 200},
-
+		{ id: 1, title: "Bx Wooden Table", price: 200},
+		{ id: 2, title: "Bx Wooden Table", price: 300},
+		{ id: 3, title: "Bx Wooden Table", price: 200},
+		{ id: 4, title: "Bx Wooden Table", price: 500},
+		{ id: 5, title: "Bx Wooden Table", price: 200},
+		{ id: 6, title: "Bx Wooden Table", price: 300},
+		{ id: 7, title: "Bx Wooden Table", price: 200},
   ])
 
 	return (
