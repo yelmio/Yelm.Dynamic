@@ -5,16 +5,6 @@ import { useState } from "react"
 const ItemsCard = dynamic(() => import("../components/molecules/ItemsCard"))
 const Tabs = dynamic(() => import("../components/atoms/Tabs"))
 
-// export const getStaticProps = async () => {
-// 	const response = await fetch()
-// 	const data = await response.json()
-
-// 	return {
-// 		props: { items: data }
-// 	}
-
-// }
-
 export default function Items() { // Items({items})
 
 	const [items, setGoods] = useState([
