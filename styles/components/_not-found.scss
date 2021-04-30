@@ -1,5 +1,22 @@
 .not-found {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   h1 {
-    color: red
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 60px;
+    color: $color-black;
+    margin-bottom: 14px;
+  }
+  span{
+    color: $color-black;
+    margin-bottom: 39px;
+  }
+  button{
+    color:$color-white;
+    padding: 15px 62px;
   }
 }
