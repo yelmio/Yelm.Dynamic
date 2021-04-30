@@ -1,10 +1,12 @@
 .tabs{
 	list-style: none;
 	margin-bottom: 16px;
+	
 	&__item{
 		display: inline-block;
 		padding-right: 40px;
 		cursor: pointer;
+
 		a{
 			color: $color-primary;
 			font-weight: 500;
@@ -13,12 +15,6 @@
 			opacity: 0.6;
 			border-bottom: 2px solid $color-white;
 			transition: all 0.5s;
-		}
-	}
-	.selected {
-		a{
-			border-bottom: 2px solid $color-primary;
-			opacity: 1;
 		}
 	}
 }
