@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import AppContext from "../../context/appProvider"
 
-const BadgeButton = (props) => {
-  const [count, setCount] = useState(props.price)
+const BadgeButton = ({price}) => {
+	const appData = useContext(AppContext)
+  const [count, setCount] = useState(price)
+
+	const badgeStyles = {
+		backgroundColor: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
+	}
 
   return (
-		<div className="btn_budge">
-			<span onClick={() => {setCount((count <= props.price) ? props.price : count - props.price)}}>-</span>
+		<div className="btn_badge" style={badgeStyles}>
+			<span onClick={() => {setCount((count <= price) ? price : count - price)}}>-</span>
 			<p>$ {parseFloat(count.toFixed(2))}</p>
-			<span onClick={() => {setCount(count + props.price)}}>+</span>
+			<span onClick={() => {setCount(count + price)}}>+</span>
 		</div>
   );
 }

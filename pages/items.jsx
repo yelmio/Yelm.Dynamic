@@ -6,7 +6,7 @@ import axios from "axios"
 const ItemsCard = dynamic(() => import("../components/molecules/ItemsCard"))
 const Tabs = dynamic(() => import("../components/atoms/Tabs"))
 
-export default function Items({items, error}) { 
+const Items = ({ items, error }) => { 
 	const goods = items.map((item, key) =>
 		item.items
 	);
@@ -36,7 +36,7 @@ export default function Items({items, error}) {
 	)
 }
 
-export async function getStaticProps() {
+export const getServerSideProps = async () => {
 	try {
 		const response = await axios.get("https://dev.yelm.io/api/mobile/items", {
 			 params: {
@@ -54,3 +54,5 @@ export async function getStaticProps() {
 		 return { props: {error} }
 	 }
 }
+
+export default Items

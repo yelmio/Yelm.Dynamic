@@ -3,8 +3,14 @@ import 'swiper/swiper.scss';
 import Head from "next/head";
 import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion"
 import Default from "../layouts/Default"
+import axios from "axios"
+import { useState } from "react"
+import { AppProvider } from "../context/appProvider"
 
-const MyApp = ({ Component, pageProps, router }) => {
+const MyApp = ({ Component, pageProps, router, data }) => {
+
+  const [appData, setAppData] = useState(data)
+
   const variants = {
     enter: () => {
       return {
@@ -25,7 +31,7 @@ const MyApp = ({ Component, pageProps, router }) => {
         opacity: 0
       };
     }
-  };
+  }
 
   return (
     <>
@@ -37,26 +43,40 @@ const MyApp = ({ Component, pageProps, router }) => {
         <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
       </Head>
-      <Default>
-        <AnimatePresence initial={false} exitBeforeEnter>
-          <LazyMotion features={domAnimation}>
-            <m.div
-              key={router.route}
-              variants={variants} 
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                opacity: { duration: 0.3 }, y: { type: "spring", stiffness: 300, damping: 20 },
-              }}
-            >
-              <Component {...pageProps} key={router.route}/>
-            </m.div>
-          </LazyMotion>
-        </AnimatePresence>
-      </Default>
+      <AppProvider value={appData}>
+        <Default>
+          <AnimatePresence initial={false} exitBeforeEnter>
+            <LazyMotion features={domAnimation}>
+              <m.div
+                key={router.route}
+                variants={variants} 
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  opacity: { duration: 0.3 }, y: { type: "spring", stiffness: 300, damping: 20 },
+                }}
+              >
+                <Component {...pageProps} key={router.route}/>
+              </m.div>
+            </LazyMotion>
+          </AnimatePresence>
+        </Default>
+      </AppProvider>
     </>
   )
+}
+
+MyApp.getInitialProps = async (ctx) => {
+const response = await axios.get("https://dev.yelm.io/api/mobile/application", {
+    params: {
+    language_code: "ru",
+    region_code: "RU",
+    platform: "5fd33466e17963.29052139"
+    }
+  })
+  const data = response.data
+  return { data: data}
 }
 
 export default MyApp

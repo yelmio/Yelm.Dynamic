@@ -1,8 +1,11 @@
 import Link from "../atoms/Link"
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import AppContext from "../../context/appProvider"
 
 const Navigation = () => {
+	const appData = useContext(AppContext)
+
 	const [links, setLinks] = useState([
 		{ id: 1, path: "/", name: "Новости" },
 		{ id: 2, path: "/items", name: "Товары" },
@@ -15,6 +18,10 @@ const Navigation = () => {
 
 	const router = useRouter()
 
+	const linkStyles = {
+		backgroundColor: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
+	}
+
 	const handleChange = index => {
 		setSelected(index);
 	}
@@ -23,7 +30,6 @@ const Navigation = () => {
 		<nav className="navigation">
 			<ul className="navigation__list">
 				{links.map((link, index) => {
-				// let style = index === selected ? `navigation__item selected-${link.id}` : "navigation__item";
 				return (
 					<li
 						key={index}
@@ -31,6 +37,7 @@ const Navigation = () => {
 						onClick={() => handleChange(index)}
 					>
 						<Link link={ link.path } name={ link.name }/>
+						<div className="navigation__marker" style={linkStyles}></div>
 					</li>
 				);
 			})}

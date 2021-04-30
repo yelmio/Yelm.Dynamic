@@ -3,8 +3,9 @@ import { useState } from "react"
 import { YMaps, Map, Placemark, Polygon } from "react-yandex-maps"
 import axios from "axios"
 
-const Shops = ({ polygons, error }) => {
 
+const Shops = ({ polygons, error }) => {
+  
   const [mapOptions, setMapOptions] = useState({
     zoom: 8, 
     bounds: [[ 55.50090388956289, 37.18227742968749 ], [ 55.99662016956414, 38.06118367968748 ]], 
@@ -50,7 +51,7 @@ const Shops = ({ polygons, error }) => {
   )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   try {
    const response = await axios.get("https://rest.yelm.io/api/mobile/polygons", {
       params: {

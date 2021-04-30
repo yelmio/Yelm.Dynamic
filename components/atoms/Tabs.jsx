@@ -1,6 +1,9 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import AppContext from "../../context/appProvider"
 
 const Tabs = (props) => {
+	const appData = useContext(AppContext)
+
 	const [selected, setSelected] = useState(0)
 
 	const handleChange = index => {
@@ -11,14 +14,14 @@ const Tabs = (props) => {
   return (
 		<ul className="tabs">
 			{props.items.map((tab, index) => {
-				let style = index === selected ? "tabs__item selected" : "tabs__item";
 				return (
 					<li
 						key={index}
-						className={ style }
+						className="tabs__item"
 						onClick={() => handleChange(index)}
 					>
-						<a>{tab.name}</a>
+						<a style={ index === selected ? { borderBottom: `2px solid #${appData.settings.theme}`, color: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
+					} : {borderBottom: "2px solid #FFFFFF", color: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",}}>{tab.name}</a>
 					</li>
 				);
 			})}

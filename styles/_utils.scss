@@ -6,14 +6,13 @@
   cursor: pointer;
   background-color: $color-primary;
 
-  &_budge{
+  &_badge{
     width: 165.22px;
     height: 41.3px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     color: $color-white;
-    background-color: $color-primary;
     border-radius: 20px;
     span{
       cursor: pointer;

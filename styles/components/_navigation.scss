@@ -2,6 +2,18 @@
 	height: 100%;
 	display: flex;
 	align-items: center;
+	&__marker {
+		position: absolute;
+		width: 4px;
+		height: 4px;
+		left: -15px;
+    top: 6px;
+		border-radius: 50%;
+
+		&::before {
+			display: none !important;
+		}
+	}
 	&__list{
 		display: flex;
 		flex-direction: column;
@@ -11,6 +23,7 @@
 		z-index: 10;
 		border-left: 2px solid #E0E0E0;
 		padding-left: 12px;
+		list-style: none;
 	}
 	@for $i from 0 through 5 {
 		.selected-#{$i} {
@@ -30,9 +43,7 @@
 		font-size: 14px;
 		line-height: 17px;
 		transition: all 0.5s;
-		&::marker{
-			color: $color-primary;
-		}
+		
 		a{
 			transition: all 0.5s;
 			opacity: 0.6;
