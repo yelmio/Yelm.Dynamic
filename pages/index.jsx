@@ -10,10 +10,12 @@ SwiperCore.use([Navigation]);
 
 const NewsCard = dynamic(() => import("../components/molecules/NewsCard"))
 
+
 const Home = ({data}) => {
   const appData = useContext(AppContext)
 
   const [news, setNews] = useState(data);
+  const [showModal, setShowModal] = useState(false);
 
   const buttonsStyles = {
 		backgroundColor: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
@@ -42,7 +44,7 @@ const Home = ({data}) => {
         {
           news.map((e) => (
             <SwiperSlide key={ e.id } tag="li">
-              <NewsCard description={ e.description } title={ e.title } image={ e.image }></NewsCard>
+              <NewsCard description={ e.description } title={ e.title } image={ e.image } setShowModal={ setShowModal }></NewsCard>
             </SwiperSlide>
           ))
         }
@@ -66,7 +68,6 @@ export const getServerSideProps = async () => {
       }
     })
     const data = response.data
-    console.log(data)
     return { props: { data } }
   } catch (error) {
     return { props: { error } }
