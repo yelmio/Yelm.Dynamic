@@ -26,8 +26,8 @@ const Items = ({ items, error }) => {
 				<Tabs items={items} updateData={updateData}/>
 				<div className="items__wrapper">
 					{
-						goods[panel].map((e) => (
-							<ItemsCard key={ e.id } title={ e.name } price={e.price} image={ e.preview_image }></ItemsCard>
+						goods[panel].map((e, index) => (
+							<ItemsCard key={ e.id } title={ e.name } price={e.price} image={ e.preview_image } product={e}></ItemsCard>
 						))
 					}
 				</div>

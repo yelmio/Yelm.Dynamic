@@ -18,7 +18,7 @@ const Cart = () => {
 			<div className="cart" onClick={togglePopup}>
 				<CartIcon width="48" height="48" fill={`#${appData.settings.theme}`} stroke="white"/>
 			</div>
-			<PopupCart showPopup={showPopup} />
+			<PopupCart showPopup={showPopup}/>
 		</div>
 	)
 }

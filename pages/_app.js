@@ -6,6 +6,7 @@ import Default from "../layouts/Default"
 import axios from "axios"
 import { useState } from "react"
 import { AppProvider } from "../context/appProvider"
+import { CartProvider } from "../context/CartProvider"
 
 const MyApp = ({ Component, pageProps, router, data }) => {
 
@@ -44,24 +45,26 @@ const MyApp = ({ Component, pageProps, router, data }) => {
         <meta name="msapplication-TileColor" content="#da532c" />
       </Head>
       <AppProvider value={appData}>
-        <Default>
-          <AnimatePresence initial={false} exitBeforeEnter>
-            <LazyMotion features={domAnimation}>
-              <m.div
-                key={router.route}
-                variants={variants} 
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  opacity: { duration: 0.3 }, y: { type: "spring", stiffness: 300, damping: 20 },
-                }}
-              >
-                <Component {...pageProps} key={router.route}/>
-              </m.div>
-            </LazyMotion>
-          </AnimatePresence>
-        </Default>
+        <CartProvider>
+          <Default>
+            <AnimatePresence initial={false} exitBeforeEnter>
+              <LazyMotion features={domAnimation}>
+                <m.div
+                  key={router.route}
+                  variants={variants} 
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    opacity: { duration: 0.3 }, y: { type: "spring", stiffness: 300, damping: 20 },
+                  }}
+                >
+                  <Component {...pageProps} key={router.route}/>
+                </m.div>
+              </LazyMotion>
+            </AnimatePresence>
+          </Default>
+        </CartProvider>
       </AppProvider>
     </>
   )

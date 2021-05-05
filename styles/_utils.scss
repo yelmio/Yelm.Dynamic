@@ -14,9 +14,9 @@
     justify-content: space-around;
     color: $color-white;
     border-radius: 20px;
-    span{
-      cursor: pointer;
-    }
+    outline: none;
+    border:none;
+    cursor: pointer;
   }
 
   &_round {
