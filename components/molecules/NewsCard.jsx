@@ -1,11 +1,9 @@
 import { useContext } from "react"
 import Image from "next/image"
 import AppContext from "../../context/appProvider"
-import dynamic from "next/dynamic"
 
-const Modal = dynamic(() => import("../atoms/Modal"))
+const NewsCard = ({title, description, image, date, setShowModal}) => {
 
-const NewsCard = ({title, description, image, setShowModal}) => {
   const appData = useContext(AppContext)
 
   const buttonsStyles = {
@@ -13,7 +11,15 @@ const NewsCard = ({title, description, image, setShowModal}) => {
 	}
 
   const handleClick = () => {
-    setShowModal(true)
+    setShowModal({
+      showing: true, 
+      data: {
+        image: image,
+        title: title,
+        description: description,
+        date: date
+      }
+    })
   }
 
   return (
