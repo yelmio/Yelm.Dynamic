@@ -1,5 +1,10 @@
 import { AnimatePresence, m } from "framer-motion";
+import { useContext } from "react"
 import CrossIcon from "./icons/CrossIcon";
+import Image from "next/image";
+import dayjs from "dayjs";
+import "dayjs/locale/ru";
+import AppContext from "../../context/appProvider"
 
 const backdrop = {
   visible: { opacity: 1 },
@@ -8,43 +13,54 @@ const backdrop = {
 
 const modal = {
   hidden: {
-    y: "-100vh",
     opacity: 0
   },
   visible: {
-    y: "10px",
     opacity: 1,
     transition: { delay: 0.5 }
   }
   
 }
 
-const Modal = ({image, title, date, text, showModal, setShowModal}) => {
+const Modal = ({showModal, setShowModal}) => {
+
+  const appData = useContext(AppContext)
 
   const handleClick = () => {
-    setShowModal(false)
+    setShowModal({
+      showing: false,
+      data: {}
+    })
   }
 
+  const buttonsStyles = {
+		backgroundColor: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
+	}
+  
   return ( 
     <AnimatePresence exitBeforeEnter>
       {
-        showModal && (
+        showModal.showing && (
         <m.div className="modal__backdrop" variants={backdrop} initial="hidden" animate="visible" exit="hidden">
           <m.div className="modal" variants={modal}> 
             {
-              image && <Image src={image} width={630} height={350}></Image>
+             showModal.data.image && <Image src={showModal.data.image} width={630} height={350}></Image>
             }
             <div className="modal__content">
-              <h3>Title</h3>
-              <span>Data</span>
+              <h3>{showModal.data.title}</h3>
               {
-                text && 
+              showModal.data.date && <span>{dayjs(showModal.data.date).locale("ru").format('DD MMM YYYY')}</span>
+              }
+              {
+                showModal.data.description && 
                 <div className="modal__text">
-                  <p>Text</p>
+                  <p>{showModal.data.description}</p>
+                  <p>{showModal.data.description}</p>
+                  <p>{showModal.data.description}</p>
                 </div>
               }
             </div>
-            <button className="btn btn_round" onClick={handleClick}>
+            <button className="btn btn_round" onClick={handleClick} style={buttonsStyles}>
               <CrossIcon width={16} height={16} fill="#FFFFFF" stroke="#FFFFFF" />
             </button>
           </m.div>  
@@ -53,7 +69,6 @@ const Modal = ({image, title, date, text, showModal, setShowModal}) => {
         )
       }
     </AnimatePresence>
-    
    );
 }
  

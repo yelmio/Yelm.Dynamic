@@ -3,16 +3,18 @@
   box-shadow: 4px 4px 50px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   padding: 16px;
-  cursor: pointer;
   position: relative;
+  display: flex;
+  flex-direction: column;
+
 
   &__title,
   &__description {
     font-weight: 500;
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 18px;
+    line-height: 22px;
     color: $color-black;
-    max-width: 350px;
+    max-width: 268px;
     margin-bottom: 16px;
     margin-top: 24px;
     overflow : hidden;
@@ -21,10 +23,10 @@
   }
 
   &__description {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 17px;
     color: $color-secondary;
-    max-width: 378px;
+    max-width: 268px;
     margin-top: 0;
     overflow : hidden;
     text-overflow: ellipsis;
@@ -32,5 +34,10 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     white-space: normal;
+  }
+
+  button {
+    margin: auto auto 0 0;
+    cursor: pointer;
   }
 }

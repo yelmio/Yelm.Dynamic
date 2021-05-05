@@ -9,13 +9,19 @@ import axios from "axios"
 SwiperCore.use([Navigation]);
 
 const NewsCard = dynamic(() => import("../components/molecules/NewsCard"))
-
+const Modal = dynamic(() => import("../components/atoms/Modal"))
 
 const Home = ({data}) => {
-  const appData = useContext(AppContext)
+  const appData = useContext(AppContext);
 
   const [news, setNews] = useState(data);
-  const [showModal, setShowModal] = useState(false);
+
+  const [showModal, setShowModal] = useState({
+    showing: false,
+    data: {}
+  });
+
+  const [showAll, setShowAll] = useState(false)
 
   const buttonsStyles = {
 		backgroundColor: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
@@ -32,27 +38,57 @@ const Home = ({data}) => {
         <title>Новости | Yelm</title>
       </Head>
       <section className="news">
-        <div className="swiper-button-prev" style={buttonsStyles}>
-          <Image src="/icons/vector.svg" height={16} width={10} />
-        </div>
-        <Swiper 
-          slidesPerView={3}
-          wrapperTag="ul"
-          loop="true"
-          navigation={navigation}
-        >
         {
-          news.map((e) => (
-            <SwiperSlide key={ e.id } tag="li">
-              <NewsCard description={ e.description } title={ e.title } image={ e.image } setShowModal={ setShowModal }></NewsCard>
-            </SwiperSlide>
-          ))
+          !showAll && 
+          <div className="news__show-top">
+            <h1>Последние новости</h1>
+            <div className="news__main">
+              <div className="swiper-button-prev" style={buttonsStyles}>
+                <Image src="/icons/vector.svg" height={16} width={10} />
+              </div>
+              <Swiper 
+                slidesPerView={3}
+                wrapperTag="ul"
+                loop="true"
+                navigation={navigation}
+              >
+              {
+                news.map((e) => (
+                  <SwiperSlide key={ e.id } tag="li">
+                    <NewsCard description={ e.description } title={ e.title } image={ e.image } date={ e.publication } setShowModal={setShowModal}></NewsCard>
+                  </SwiperSlide>
+                ))
+              }
+              </Swiper>
+              <div className="swiper-button-next" style={buttonsStyles}>
+                <Image src="/icons/vector.svg" height={16} width={10} />
+              </div>
+            </div>
+            <span onClick={() => setShowAll(true)}>Смотреть все</span>
+          </div>
         }
-        </Swiper>
-        <div className="swiper-button-next" style={buttonsStyles}>
-          <Image src="/icons/vector.svg" height={16} width={10} />
-        </div>
+        {
+          showAll && 
+          <div className="news__show-all">
+            <div className="news__show-all-header">
+              <button className="btn btn_round" onClick={() => setShowAll(false)} style={buttonsStyles}>
+                <Image src="/icons/vector.svg" height={16} width={10} />
+              </button>
+              <h3>Все новости</h3>
+              <span>Фильтр</span>
+            </div>
+            <div className="news__show-all-content">
+              {
+                news.map((e) => (
+                  <NewsCard key={e.id} description={ e.description } title={ e.title } image={ e.image } date={ e.publication } setShowModal={setShowModal}></NewsCard>
+                ))
+              }
+            </div>
+          </div>
+        }
+       
       </section>
+      <Modal setShowModal={setShowModal}  showModal={showModal}/>
     </>
   )
 }
