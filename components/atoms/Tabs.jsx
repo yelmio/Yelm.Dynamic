@@ -20,7 +20,7 @@ const Tabs = (props) => {
 						className="tabs__item"
 						onClick={() => handleChange(index)}
 					>
-						<a style={ index === selected ? { borderBottom: `2px solid #${appData.settings.theme}`, color: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
+						<a style={ index === selected ? { borderBottom: `2px solid #${appData.settings.theme}`, opacity: 1, color: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
 					} : {borderBottom: "2px solid #FFFFFF", color: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",}}>{tab.name}</a>
 					</li>
 				);

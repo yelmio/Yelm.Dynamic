@@ -2,6 +2,7 @@ import dynamic from "next/dynamic"
 import { useState, useEffect } from "react";
 import { useCycle } from 'framer-motion';
 const Navigation = dynamic(() => import("../components/molecules/Navigation"))
+const Cart = dynamic(() => import("../components/molecules/Cart"))
 const BurgerMenu = dynamic(() => import("../components/molecules/BurgerMenu"))
 
 
@@ -16,6 +17,9 @@ const Default = ({children}) => {
         <Navigation />
         {/* { size.width <= 1366 ? <BurgerMenu isOpen={isOpen} toggleOpen={toggleOpen} /> : <Navigation /> } */}
       </aside>
+      <header>
+        <Cart />
+      </header>
       <main className="container">
         { children }
       </main>
