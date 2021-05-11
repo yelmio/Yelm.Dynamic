@@ -34,8 +34,13 @@ const Items = ({ items, error }) => {
 				<Tabs items={items} updateData={updateData}/>
 				<div className="items__wrapper">
 					{
+<<<<<<< HEAD
 						goods[panel].map((e) => (
 							<ItemsCard key={ e.id } title={ e.name } price={e.price} image={ e.preview_image } item={e} setShowModal={setShowModal}></ItemsCard>
+=======
+						goods[panel].map((e, index) => (
+							<ItemsCard key={ e.id } title={ e.name } price={e.price} image={ e.preview_image } product={e}></ItemsCard>
+>>>>>>> 68c309ffa7e9c12ccafedd9ef147762b613798e2
 						))
 					}
 				</div>
