@@ -18,7 +18,8 @@ const Home = ({data}) => {
 
   const [showModal, setShowModal] = useState({
     showing: false,
-    data: {}
+    data: {},
+    modalType: null,
   });
 
   const [showAll, setShowAll] = useState(false)
@@ -86,9 +87,8 @@ const Home = ({data}) => {
             </div>
           </div>
         }
-       
       </section>
-      <Modal setShowModal={setShowModal}  showModal={showModal}/>
+      <Modal setShowModal={setShowModal} showModal={showModal}/>
     </>
   )
 }

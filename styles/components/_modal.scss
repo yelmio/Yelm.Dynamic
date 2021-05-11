@@ -7,6 +7,8 @@
   background: #FCFCFC;
   border-radius: 30px;
   position: relative;
+  font-size: 18px;
+  line-height: 22px;
  
 
   &__content {
@@ -18,6 +20,37 @@
     @extend .custom-scrollbar;
   }
 
+  &__top {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__title {
+    font-size: 24px;
+    line-height: 30px;
+    color: $color-black;
+    margin-right: 8px;
+  }
+
+  &__quantity {
+    color: $color-secondary;
+    margin-bottom: 0 !important;
+  }
+
+  &__discount {
+    width: 90px;
+    height: 30px;
+    border-radius: 30px;
+    position: absolute;
+    left: 24px;
+    top: 28px;
+    color: $color-white;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   h3 {
     font-size: 36px;
     line-height: 45px;
@@ -25,33 +58,85 @@
     margin-bottom: 24px;
   }
 
-  span {
-    font-size: 18px;
-    line-height: 22px;
+  &__date {
     color: $color-secondary;
     margin-bottom: 24px;
-
   }
 
   &__text {
     margin-top: 24px;
 
     p {
-      font-size: 18px;
-      line-height: 21px;
       color: $color-black;
     }
+
+    &_item {
+      margin-bottom: 24px;
+      p {
+        font-weight: 350;
+        color: $color-secondary;
+      }
+    }
   }
+
+  &__specifications {
+    
+    h4 {
+      font-size: 24px;
+      line-height: 30px;
+      color: $color-black;
+      padding-bottom: 14px;
+      border-bottom: 1px solid $color-secondary2;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      line-height: 21px;
+      color: $color-secondary;
+      padding: 16px 0;
+      // border-top: 1px solid $color-secondary2;
+      border-bottom: 1px solid $color-secondary2;
+    }
+  }
+
+
 
   img {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
   }
 
-  button {
+  &__close {
     position: absolute;
     right: -70px;
     top: -20px;
+  }
+
+  &__footer {
+    padding: 24px;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-content {
+      font-size: 24px;
+      line-height: 25px;
+    }
+
+    &-actions {
+      button {
+        font-size: 18px;
+        line-height: 21px;
+      }
+    }
   }
 
   &__backdrop {

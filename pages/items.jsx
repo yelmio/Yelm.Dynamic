@@ -5,11 +5,19 @@ import axios from "axios"
 
 const ItemsCard = dynamic(() => import("../components/molecules/ItemsCard"))
 const Tabs = dynamic(() => import("../components/atoms/Tabs"))
+const Modal = dynamic(() => import("../components/atoms/Modal"))
+
 
 const Items = ({ items, error }) => { 
 	const goods = items.map((item, key) =>
 		item.items
 	);
+
+  const [showModal, setShowModal] = useState({
+    showing: false,
+    data: {},
+    modalType: null,
+  });
 
 	const [panel, setPanel] = useState(0)
 
@@ -27,11 +35,12 @@ const Items = ({ items, error }) => {
 				<div className="items__wrapper">
 					{
 						goods[panel].map((e) => (
-							<ItemsCard key={ e.id } title={ e.name } price={e.price} image={ e.preview_image }></ItemsCard>
+							<ItemsCard key={ e.id } title={ e.name } price={e.price} image={ e.preview_image } item={e} setShowModal={setShowModal}></ItemsCard>
 						))
 					}
 				</div>
       </section>
+      <Modal setShowModal={setShowModal} showModal={showModal}/>
 		</>
 	)
 }

@@ -13,12 +13,14 @@ const NewsCard = ({title, description, image, date, setShowModal}) => {
   const handleClick = () => {
     setShowModal({
       showing: true, 
+        modalType: "news",
       data: {
         image: image,
         title: title,
         description: description,
         date: date
-      }
+      },
+    
     })
   }
 
