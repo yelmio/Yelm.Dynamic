@@ -4,7 +4,6 @@ import Image from "next/image"
 
 const BadgeButton = dynamic(() => import("../atoms/BadgeButton"))
 
-<<<<<<< HEAD
 const ItemsCard = ({ title, price, image, item, setShowModal }) => {
   const handleClick = () => {
     setShowModal({
@@ -19,9 +18,6 @@ const ItemsCard = ({ title, price, image, item, setShowModal }) => {
     })
   }
 
-=======
-const ItemsCard = ({ title, price, image, product }) => {
->>>>>>> 68c309ffa7e9c12ccafedd9ef147762b613798e2
   return (
     <m.div className="items-card" whileHover={{scale: 1.05, transition: "0.5s"}}>
       <Image className="items-card__image" src={ image } alt="Изображение товара" width={268}
