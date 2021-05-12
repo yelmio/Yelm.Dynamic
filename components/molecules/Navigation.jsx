@@ -1,10 +1,8 @@
 import Link from "../atoms/Link"
 import { useRouter } from "next/router"
 import { useState, useContext } from "react"
-import AppContext from "../../context/appProvider"
 
 const Navigation = () => {
-	const appData = useContext(AppContext)
 
 	const [links, setLinks] = useState([
 		{ id: 1, path: "/", name: "Новости" },
@@ -19,7 +17,7 @@ const Navigation = () => {
 	const router = useRouter()
 
 	const linkStyles = {
-		backgroundColor: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
+		backgroundColor: "#333333",
 	}
 
 	const handleChange = index => {

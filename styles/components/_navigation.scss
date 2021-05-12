@@ -2,6 +2,9 @@
 	height: 100%;
 	display: flex;
 	align-items: center;
+  margin-left: 127px;
+  margin-top: 33px;
+
 	&__marker {
 		position: absolute;
 		width: 4px;
@@ -14,17 +17,17 @@
 			display: none !important;
 		}
 	}
+
 	&__list{
 		display: flex;
 		flex-direction: column;
-		justify-content: space-around;
-		height: 70%;
-    max-height: 750px;
+    height: 700px;
 		z-index: 10;
 		border-left: 2px solid #E0E0E0;
 		padding-left: 12px;
 		list-style: none;
 	}
+
 	@for $i from 0 through 5 {
 		.selected-#{$i} {
 			::before{
@@ -37,13 +40,23 @@
 			}
 		}
 	}
+  
 	&__item{
 		position: relative;
 		font-weight: 500;
 		font-size: 14px;
 		line-height: 17px;
 		transition: all 0.5s;
-		
+    margin-bottom: 135px;
+
+    &:nth-child(1) {
+      margin-top: 40px;
+    }
+
+    &:last-child{
+      margin-bottom: 57px;
+    }
+
 		a{
 			transition: all 0.5s;
 			opacity: 0.6;
