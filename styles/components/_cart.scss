@@ -1,8 +1,9 @@
 .cart{
 	position: absolute;
 	top: 40px;
-	right: 160px;
+	right: 130px;
 	cursor: pointer;
+
 	&-popup{
 		position: absolute;
 		top: 104px;
@@ -16,6 +17,7 @@
 		flex-direction: column;
 		justify-content: center;
 		z-index: 10;
+
 		&__title{
 			font-weight: 500;
 			font-size: 18px;
@@ -23,6 +25,7 @@
 			color: $color-black;
 			margin-bottom: 24px;
 		}
+
 		.btn{
 			margin-top: 8px;
 			padding: 13px 81px;
@@ -34,6 +37,7 @@
 	&-item{
 		display: flex;
 		padding-bottom: 16px;
+    
 		&__description{
 			position: relative;
 			padding-left: 16px;

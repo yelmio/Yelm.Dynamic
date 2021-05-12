@@ -1,4 +1,5 @@
 import Head from "next/head"
+import { AnimatePresence, m } from "framer-motion";
 import dynamic from "next/dynamic"
 import { useState, useContext } from "react"
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,6 +7,7 @@ import SwiperCore, { Navigation } from "swiper";
 import Image from "next/image"
 import AppContext from "../context/appProvider"
 import axios from "axios"
+
 SwiperCore.use([Navigation]);
 
 const NewsCard = dynamic(() => import("../components/molecules/NewsCard"))
@@ -14,11 +16,34 @@ const Modal = dynamic(() => import("../components/atoms/Modal"))
 const Home = ({data}) => {
   const appData = useContext(AppContext);
 
+  const variants = {
+    enter: () => {
+      return {
+        zIndex: 0,
+        y: -1000,
+        opacity: 0
+      };
+    },
+    center: {
+      zIndex: 1,
+      y: 0,
+      opacity: 1
+    },
+    exit: () => {
+      return {
+        zIndex: 0,
+        y: 1000,
+        opacity: 0
+      };
+    }
+  }
+
   const [news, setNews] = useState(data);
 
   const [showModal, setShowModal] = useState({
     showing: false,
-    data: {}
+    data: {},
+    modalType: null,
   });
 
   const [showAll, setShowAll] = useState(false)
@@ -69,26 +94,36 @@ const Home = ({data}) => {
         }
         {
           showAll && 
-          <div className="news__show-all">
-            <div className="news__show-all-header">
-              <button className="btn btn_round" onClick={() => setShowAll(false)} style={buttonsStyles}>
-                <Image src="/icons/vector.svg" height={16} width={10} />
-              </button>
-              <h3>Все новости</h3>
-              <span>Фильтр</span>
-            </div>
-            <div className="news__show-all-content">
-              {
-                news.map((e) => (
-                  <NewsCard key={e.id} description={ e.description } title={ e.title } image={ e.image } date={ e.publication } setShowModal={setShowModal}></NewsCard>
-                ))
-              }
-            </div>
-          </div>
+          <AnimatePresence exitBeforeEnter>
+            {
+              <m.div className="news__show-all"
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  opacity: { duration: 0.3 }, y: { type: "spring", stiffness: 300, damping: 20 },
+                }}>
+                  <div className="news__show-all-header">
+                    <button className="btn btn_round" onClick={() => setShowAll(false)} style={buttonsStyles}>
+                      <Image src="/icons/vector.svg" height={16} width={10} />
+                    </button>
+                    <h3>Все новости</h3>
+                    <span>Фильтр</span>
+                  </div>
+                  <div className="news__show-all-content">
+                    {
+                      news.map((e) => (
+                        <NewsCard key={e.id} description={ e.description } title={ e.title } image={ e.image } date={ e.publication } setShowModal={setShowModal}></NewsCard>
+                      ))
+                    }
+                  </div>
+              </m.div>
+            }
+          </AnimatePresence>
         }
-       
       </section>
-      <Modal setShowModal={setShowModal}  showModal={showModal}/>
+      <Modal setShowModal={setShowModal} showModal={showModal}/>
     </>
   )
 }
