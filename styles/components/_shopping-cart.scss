@@ -1,0 +1,129 @@
+.shopping-cart{
+	&__header{
+		display: flex;
+		align-items: center;
+		padding-top: 128px;
+		h1{
+			font-weight: 500;
+			font-size: 24px;
+			line-height: 25px;
+			color: $color-black;
+		}
+		span{
+			padding-top: 4px;
+			padding-left: 8px;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 24px;
+			line-height: 25px;
+		}
+	}
+	&__table{
+		width: 100%;
+		padding-top: 40px;
+		padding-right: 320px;
+		border-spacing: 0;
+		th, td{
+			border-bottom: 1px solid #BDBDBD;;
+		}
+		th{
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 25px;
+			color: #BDBDBD;
+			padding-bottom: 8px;
+			&:first-child{
+				text-align: start;
+			}
+		}
+		td{
+			padding: 24px 0;
+			&:not(:first-child){
+				text-align: center;
+			}
+		}
+	}
+	&__item{
+		display: flex;
+		img{
+			border-radius: 10px;
+		}
+	}
+	&__description{
+		padding-left: 16px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: flex-start;
+		h4{
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 22px;
+			color: $color-black;
+		}
+		span{
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 17px;
+		}
+		.shopping-cart__number{
+			color: #BDBDBD;
+		}
+	}
+	.btn_badge{
+		margin: auto;
+	}
+	&__footer{
+		display: flex;
+		justify-content: space-between;
+		padding-top: 24px;
+		padding-right: 320px;
+	}
+	&__promocode-form{
+		padding-top: 24px;
+		position: relative;
+		input{
+			border: 1px solid #E0E0E0;
+			border-radius: 30px;
+			padding: 14px 16px;
+			outline: none;
+			&::placeholder{
+				font-weight: 350;
+				font-size: 12px;
+				line-height: 20px;
+				color: #BDBDBD;
+			}
+		}
+		button{
+			outline: none;
+			cursor: pointer;
+			position: absolute;
+			left: 132px;
+			top: 23px;
+			background: #884DFF;
+			border:none;
+			padding: 15px;
+			border-radius: 30px;
+		}
+	}
+	&__total{
+		display: flex;
+		flex-direction: column;
+		span:not(:first-child){
+			font-weight: 500;
+			font-size: 24px;
+			line-height: 25px;
+			padding-left: 8px;
+			&:first-child{
+				font-weight: 500;
+				font-size: 18px;
+				line-height: 25px;
+				color: #333333;
+			}	
+		}
+		
+		button{
+			margin-top: 22px;
+		}
+	}
+}

@@ -7,7 +7,6 @@ const BurgerMenu = dynamic(() => import("../components/molecules/BurgerMenu"))
 
 
 const Default = ({children}) => {
-
   const size = useWindowSize();
   const [isOpen, toggleOpen] = useCycle(false, true);
 
@@ -18,7 +17,7 @@ const Default = ({children}) => {
         {/* { size.width <= 1366 ? <BurgerMenu isOpen={isOpen} toggleOpen={toggleOpen} /> : <Navigation /> } */}
       </aside>
       <header>
-        <Cart />
+      <Cart/>
       </header>
       <main className="container">
         { children }

@@ -8,7 +8,7 @@ import { useState } from "react"
 import { AppProvider } from "../context/appProvider"
 import { CartProvider } from "../context/CartProvider"
 
-const MyApp = ({ Component, pageProps, router, data }) => {
+const MyApp = ({ Component, pageProps, router, data, showPopup, setShowPopup }) => {
 
   const [appData, setAppData] = useState(data)
 

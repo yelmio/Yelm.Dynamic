@@ -1,3 +1,4 @@
+import Link from "../atoms/Link"
 import { motion, AnimatePresence } from "framer-motion";
 import { useContext } from "react"
 import AppContext from "../../context/appProvider"
@@ -11,6 +12,8 @@ const PopupCart = ({ showPopup }) => {
 	const items = useCart()
 	const dispatch = useDispatchCart()
 	const totalPrice = items.reduce((total, b) => total+ b.price , 0);
+
+	// console.log(items);
 
 	const handleRemove = index => {
 		dispatch({type: "DELETE", index})
@@ -30,8 +33,10 @@ const PopupCart = ({ showPopup }) => {
 					exit={{ opacity: 0 }}
 					className="cart-popup"
 				>
-					<h3 className="cart-popup__title">В корзине пусто</h3>
-					<button className="btn btn_medium" style={buttonsStyles}>Перейти в корзину</button>
+					<h3 className="cart-popup__title cart-popup__empty">В корзине пусто</h3>
+					<a href="/shopping-cart">
+						<button className="btn btn_medium cart-popup__empty" style={buttonsStyles}>Перейти в корзину</button>
+					</a>
 				</motion.div>
 			)}
 		</AnimatePresence>
@@ -50,7 +55,9 @@ const PopupCart = ({ showPopup }) => {
 					{items.map((item, index) => (
 						<CartItem key={index} product={item} index={index} handleRemove={handleRemove}/>
 					))}
-					<button className="btn btn_medium" style={buttonsStyles}>Перейти в корзину</button>
+					<a href="/shopping-cart">
+						<button className="btn btn_medium" style={buttonsStyles}>Перейти в корзину</button>
+					</a>
 				</motion.div>
 			)}
 		</AnimatePresence>
