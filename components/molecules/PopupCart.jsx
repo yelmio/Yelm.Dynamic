@@ -2,16 +2,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useContext } from "react"
 import AppContext from "../../context/appProvider"
 import dynamic from "next/dynamic"
-import { useCart, useDispatchCart } from "../../context/CartProvider"
+import { CartContext }  from "../../context/CartProvider"
 
 const CartItem = dynamic(() => import("../atoms/CartItem"))
 
-const PopupCart = ({ showPopup }) => {
+const PopupCart = () => {
 	const appData = useContext(AppContext)
-	const items = useCart()
-	const dispatch = useDispatchCart()
+  const CartData = useContext(CartContext)
+	const items = CartData.cart.state
+	const dispatch = CartData.cart.dispatch
 	const totalPrice = items.reduce((total, b) => total+ b.price , 0);
-
+  const popup = CartData.popup.popup
+ 
 	const handleRemove = index => {
 		dispatch({type: "DELETE", index})
 	}
@@ -23,7 +25,7 @@ const PopupCart = ({ showPopup }) => {
 	if (items.length === 0) {
 		return (
 			<AnimatePresence>
-			{showPopup && (
+			{popup && (
 				<motion.div
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
@@ -39,7 +41,7 @@ const PopupCart = ({ showPopup }) => {
 	}
 	return (
 		<AnimatePresence>
-			{showPopup && (
+			{popup && (
 				<motion.div
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}

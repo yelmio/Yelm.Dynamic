@@ -1,7 +1,7 @@
-import { useReducer, useContext, createContext } from "react";
+import { useReducer, createContext, useState } from "react";
 
-const CartStateContext = createContext();
-const CartDispatchContext = createContext();
+const CartContext = createContext();
+
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -18,17 +18,15 @@ const reducer = (state, action) => {
   }
 };
 
-export const CartProvider = ({ children }) => {
+const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, []);
+  const [popup, setPopup] = useState(false)
 
   return (
-    <CartDispatchContext.Provider value={dispatch}>
-      <CartStateContext.Provider value={state}>
-        {children}
-      </CartStateContext.Provider>
-    </CartDispatchContext.Provider>
+    <CartContext.Provider value={{cart: {state, dispatch}, popup: {popup, setPopup}}}>
+      {children}
+    </CartContext.Provider>
   );
 };
 
-export const useCart = () => useContext(CartStateContext);
-export const useDispatchCart = () => useContext(CartDispatchContext);
+export { CartContext, CartProvider };
