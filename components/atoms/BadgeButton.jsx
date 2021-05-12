@@ -6,7 +6,7 @@ const BadgeButton = ({price, product}) => {
 	const appData = useContext(AppContext)
   const [count, setCount] = useState(price)
   const CartData = useContext(CartContext)
-  console.log(CartData, "данные из контекста корзины тут !!!")
+  // console.log(CartData, "данные из контекста корзины тут !!!")
 
 	const dispatch = CartData.cart.dispatch
   const setPopup = CartData.popup.setPopup

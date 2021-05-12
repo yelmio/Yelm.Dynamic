@@ -14,9 +14,15 @@ const PopupCart = () => {
 	const dispatch = CartData.cart.dispatch
 	const totalPrice = items.reduce((total, b) => total+ b.price , 0);
   const popup = CartData.popup.popup
+	const setPopup = CartData.popup.setPopup
  
 	const handleRemove = index => {
+		let count = items.length;
 		dispatch({type: "DELETE", index})
+		count -= 1
+		if (count === 0) {
+			setPopup(!popup);
+		}		
 	}
 
   const buttonsStyles = {
@@ -53,7 +59,7 @@ const PopupCart = () => {
 				>
 					<h3 className="cart-popup__title">В корзине { items.length } товаров на {parseFloat(totalPrice.toFixed(2))} руб</h3>
 					{items.map((item, index) => (
-						<CartItem key={index} product={item} index={index} handleRemove={handleRemove}/>
+						<CartItem key={index} product={item} index={index} handleRemove={handleRemove} items={items}/>
 					))}
 					<a href="/shopping-cart">
 						<button className="btn btn_medium" style={buttonsStyles}>Перейти в корзину</button>
