@@ -7,3 +7,13 @@
   font-weight: 500;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Stem";
+  src: url("../public/fonts/Stem-Light.woff");
+  src: local("Stem-Light"), local("Stem-Light"),
+  url("../public/fonts/Stem-Light.woff2") format("woff2"),
+  url("../public/fonts/Stem-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}

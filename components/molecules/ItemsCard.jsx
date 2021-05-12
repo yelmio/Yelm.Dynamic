@@ -4,7 +4,7 @@ import Image from "next/image"
 
 const BadgeButton = dynamic(() => import("../atoms/BadgeButton"))
 
-const ItemsCard = ({ title, price, image, item, setShowModal }) => {
+const ItemsCard = ({ title, price, image, item, setShowModal, product }) => {
   const handleClick = () => {
     setShowModal({
       showing: true, 

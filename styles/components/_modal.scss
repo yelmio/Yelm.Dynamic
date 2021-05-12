@@ -9,6 +9,10 @@
   position: relative;
   font-size: 18px;
   line-height: 22px;
+
+  img {
+    object-fit: cover !important;
+  }
  
 
   &__content {
@@ -65,6 +69,7 @@
 
   &__text {
     margin-top: 24px;
+    font-weight: 300;
 
     p {
       color: $color-black;
@@ -72,15 +77,14 @@
 
     &_item {
       margin-bottom: 24px;
+      
       p {
-        font-weight: 350;
         color: $color-secondary;
       }
     }
   }
 
   &__specifications {
-    
     h4 {
       font-size: 24px;
       line-height: 30px;
@@ -103,6 +107,7 @@
       padding: 16px 0;
       // border-top: 1px solid $color-secondary2;
       border-bottom: 1px solid $color-secondary2;
+      font-weight: 300;
     }
   }
 

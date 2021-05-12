@@ -35,7 +35,7 @@ const Items = ({ items, error }) => {
 				<div className="items__wrapper">
 					{
 						goods[panel].map((e) => (
-							<ItemsCard key={ e.id } title={ e.name } price={e.price} image={ e.preview_image } item={e} setShowModal={setShowModal}></ItemsCard>
+							<ItemsCard key={ e.id } title={ e.name } product={e} price={e.price} image={ e.preview_image } item={e} setShowModal={setShowModal}></ItemsCard>
 						))
 					}
 				</div>

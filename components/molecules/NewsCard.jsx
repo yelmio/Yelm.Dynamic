@@ -10,6 +10,9 @@ const NewsCard = ({title, description, image, date, setShowModal}) => {
 		backgroundColor: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
 	}
 
+  const descriptionReplaced = description.replace(/<[^>]*(>|$)|&nbsp;|&zwnj;|&raquo;|&laquo;|&gt;/g, " ")
+
+
   const handleClick = () => {
     setShowModal({
       showing: true, 
@@ -17,10 +20,9 @@ const NewsCard = ({title, description, image, date, setShowModal}) => {
       data: {
         image: image,
         title: title,
-        description: description,
+        description: descriptionReplaced,
         date: date
       },
-    
     })
   }
 
@@ -28,7 +30,7 @@ const NewsCard = ({title, description, image, date, setShowModal}) => {
     <div className="news-card">
       <Image className="news-card__image" src={ image } alt="Изображение новости" width={378} height={246} />
       <h3 className="news-card__title">{title}</h3>
-      <p className="news-card__description">{description}</p>
+      <p className="news-card__description">{descriptionReplaced}</p>
       <button className="btn btn_medium" style={buttonsStyles} onClick={handleClick}>Читать</button>
     </div>
   )
