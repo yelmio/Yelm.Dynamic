@@ -2,9 +2,13 @@ import Link from "../atoms/Link"
 import { useRouter } from "next/router"
 import { useState, useContext } from "react"
 import AppContext from "../../context/appProvider"
+import { CartContext }  from "../../context/CartProvider"
 
 const Navigation = () => {
 	const appData = useContext(AppContext)
+	const CartData = useContext(CartContext)
+	const popup = CartData.popup.popup
+	const setPopup = CartData.popup.setPopup
 
 	const [links, setLinks] = useState([
 		{ id: 1, path: "/", name: "Новости" },
@@ -24,6 +28,9 @@ const Navigation = () => {
 
 	const handleChange = index => {
 		setSelected(index);
+		if (popup) {
+			setPopup(!popup);
+		}
 	}
 
 	return (
