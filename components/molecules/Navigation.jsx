@@ -23,7 +23,7 @@ const Navigation = () => {
 	const router = useRouter()
 
 	const linkStyles = {
-		backgroundColor: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
+		backgroundColor: "#333333",
 	}
 
 	const handleChange = index => {

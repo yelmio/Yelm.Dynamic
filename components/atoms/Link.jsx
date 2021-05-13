@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import Link from "next/link"
-import AppContext from "../../context/appProvider"
 
 const Route = ({link, name}) => {
-	const appData = useContext(AppContext)
 
 	const linkStyles = {
-		color: appData.settings ? `#${appData.settings.theme}` : "#0A84FF",
+		color: "#333333",
 	}
 
 	return (

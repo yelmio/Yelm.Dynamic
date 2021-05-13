@@ -1,7 +1,7 @@
 .modal {
   width: 630px;
-  height: 900px;
-  margin: 2% auto;
+  height: 950px;
+  margin: 1.5% auto;
   display: flex;
   flex-direction: column;
   background: #FCFCFC;
@@ -34,6 +34,7 @@
     line-height: 30px;
     color: $color-black;
     margin-right: 8px;
+    font-weight: 500;
   }
 
   &__quantity {
@@ -91,6 +92,7 @@
       color: $color-black;
       padding-bottom: 14px;
       border-bottom: 1px solid $color-secondary2;
+      font-weight: 500;
     }
 
     ul {

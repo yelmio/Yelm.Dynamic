@@ -44,4 +44,15 @@
     margin: auto auto 0 0;
     cursor: pointer;
   }
+
+  &__footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__date {
+    border-bottom: none !important;
+  }
 }

@@ -1,6 +1,8 @@
 import { useContext } from "react"
 import Image from "next/image"
 import AppContext from "../../context/appProvider"
+import dayjs from "dayjs";
+import "dayjs/locale/ru";
 
 const NewsCard = ({title, description, image, date, setShowModal}) => {
 
@@ -31,7 +33,11 @@ const NewsCard = ({title, description, image, date, setShowModal}) => {
       <Image className="news-card__image" src={ image } alt="Изображение новости" width={378} height={246} />
       <h3 className="news-card__title">{title}</h3>
       <p className="news-card__description">{descriptionReplaced}</p>
-      <button className="btn btn_medium" style={buttonsStyles} onClick={handleClick}>Читать</button>
+      <footer className="news-card__footer">
+        <button className="btn btn_medium" style={buttonsStyles} onClick={handleClick}>Читать</button>
+        <span className="news-card__date">{ dayjs(date).locale("ru").format('DD MMM YYYY') }</span>
+      </footer>
+      
     </div>
   )
 }
