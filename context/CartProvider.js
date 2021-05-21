@@ -6,20 +6,6 @@ const CartContext = createContext();
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD":
-      // const updatedCart = [...state]
-      // const updatedItemIndex = updatedCart.findIndex(
-      //   item => item.id === action.item.id
-      // );
-      // if (updatedItemIndex < 0) {
-      //   updatedCart.push({ ...action.item});
-      // } else {
-      //   const updatedItem = {
-      //     ...updatedCart[updatedItemIndex]
-      //   };
-      //   updatedCart[updatedItemIndex] = updatedItem;
-      // }
-      // // console.log("cart: " + updatedCart, "Товар: " + updatedItemIndex); 
-      // return { ...state, updatedCart }; 
       return [...state, action.item]; 
 		break;
     case "DELETE":
