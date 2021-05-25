@@ -11,9 +11,9 @@ const Navigation = () => {
 	const setPopup = CartData.popup.setPopup
 
 	const [links, setLinks] = useState([
-		{ id: 1, path: "/", name: "Новости" },
-		{ id: 2, path: "/items", name: "Товары" },
-		{ id: 3, path: "/about", name: "О нас" },
+		{ id: 1, path: "/", name: "Главная" },
+    { id: 2, path: "/news", name: "Новости" },
+		{ id: 3, path: "/items", name: "Товары" },
 		{ id: 4, path: "/contacts", name: "Контакты" },
 		{ id: 5, path: "/shops", name: "Магазины" }
 	])

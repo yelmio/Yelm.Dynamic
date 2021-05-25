@@ -2,7 +2,6 @@ import { useReducer, createContext, useState } from "react";
 
 const CartContext = createContext();
 
-
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD":

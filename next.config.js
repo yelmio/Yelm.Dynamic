@@ -3,6 +3,9 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 })
 
 module.exports = {
+  future: {
+    webpack5: true,
+  },
 
   images: {
     domains: ["s3.eu-north-1.amazonaws.com"]
