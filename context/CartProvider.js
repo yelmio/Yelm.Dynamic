@@ -6,21 +6,29 @@ const CartContext = createContext();
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD":
-      // const updatedCart = [...state]
-      // const updatedItemIndex = updatedCart.findIndex(
-      //   item => item.id === action.item.id
-      // );
-      // if (updatedItemIndex < 0) {
-      //   updatedCart.push({ ...action.item});
-      // } else {
-      //   const updatedItem = {
-      //     ...updatedCart[updatedItemIndex]
-      //   };
-      //   updatedCart[updatedItemIndex] = updatedItem;
-      // }
-      // // console.log("cart: " + updatedCart, "Товар: " + updatedItemIndex); 
-      // return { ...state, updatedCart }; 
-      return [...state, action.item]; 
+      return state.find((item) => item.name === action.item.name)
+        ? state.map((item) =>
+            item.name === action.item.name
+              ? {
+                  ...item,
+                  quantity: item.quantity + 1
+                }
+              : item
+          )
+        : [...state, { ...action.item, quantity: 1 }]; 
+		break;
+    case "DELETE_ITEM":
+      return state.find((item) => item.name === action.item.name)?.quantity ===
+        1
+        ? state.filter((item) => item.name !== action.item.name)
+        : state.map((item) =>
+            item.name === action.item.name
+              ? {
+                  ...item,
+                  quantity: item.quantity - 1
+                }
+              : item
+          );
 		break;
     case "DELETE":
       const newArr = [...state];
