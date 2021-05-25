@@ -126,4 +126,12 @@
 			margin-top: 22px;
 		}
 	}
+	&__delete{
+		border:0;
+		outline: none;
+		background: transparent;
+	}
+	svg{
+		cursor: pointer;
+	}
 }

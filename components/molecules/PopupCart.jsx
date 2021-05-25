@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion";
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import AppContext from "../../context/appProvider"
 import dynamic from "next/dynamic"
 import { CartContext }  from "../../context/CartProvider"
@@ -17,6 +17,9 @@ const PopupCart = () => {
 	const totalAmount = items.reduce((total, b) => total + b.quantity, 0)
   const popup = CartData.popup.popup
 	const setPopup = CartData.popup.setPopup
+
+	const [elementsPerPage , setElementsPerPage] = useState(2)
+	const [currentPage, setCurrentPage] = useState(0)
  
 	const handleRemove = index => {
 		let count = items.length;
@@ -46,7 +49,7 @@ const PopupCart = () => {
 					{items.length > 0 && 
 						<div>
 							<h3 className="cart-popup__title">В корзине { totalAmount } товаров на {parseFloat(totalPrice.toFixed(2))} руб</h3>
-							{items.map((item, index) => (
+							{items.slice(currentPage*elementsPerPage, currentPage*elementsPerPage + elementsPerPage + 1).map((item, index) => (
 								<CartItem key={index} product={item} index={index} handleRemove={handleRemove} items={items}/>
 							))}
 							<Link href="/shopping-cart">
