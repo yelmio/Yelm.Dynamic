@@ -6,13 +6,17 @@ const BadgeButton = ({price, product}) => {
 	const appData = useContext(AppContext)
   const [count, setCount] = useState(price)
   const CartData = useContext(CartContext)
-  // console.log(CartData, "данные из контекста корзины тут !!!")
+	const items = CartData.cart.state
+	const popup = CartData.popup.popup
 
 	const dispatch = CartData.cart.dispatch
   const setPopup = CartData.popup.setPopup
 
-	const handleRemove = index => {
-		dispatch({type: "DELETE", index})
+	const handleRemove = item => {
+		dispatch({type: "DELETE_ITEM", item})
+		if (items.length === 0) {
+			setPopup(!popup)
+		}
 	}
 
 	const addToCart = (item) => {
@@ -27,7 +31,7 @@ const BadgeButton = ({price, product}) => {
   return (
 		<button className="btn_badge" style={badgeStyles}>
 			<span onClick={() => handleRemove(product)}>-</span>
-			<p>$ {parseFloat(count.toFixed(2))}</p>
+			<p>{appData.symbol} {parseFloat(count.toFixed(2))}</p>
 			<span onClick={() => addToCart(product)}>+</span>
 		</button>
   );

@@ -9,7 +9,7 @@ const Route = ({link, name}) => {
 
 	return (
 		<Link href={link}>
-				<a className="navigation__item" style={linkStyles}>{name}</a>
+			<a className="navigation__item" style={linkStyles}>{name}</a>
 		</Link>
 	) 
 }

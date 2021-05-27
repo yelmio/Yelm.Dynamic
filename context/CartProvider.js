@@ -2,11 +2,32 @@ import { useReducer, createContext, useState } from "react";
 
 const CartContext = createContext();
 
-
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD":
-      return [...state, action.item]; 
+      return state.find((item) => item.name === action.item.name)
+        ? state.map((item) =>
+            item.name === action.item.name
+              ? {
+                  ...item,
+                  quantity: item.quantity + 1
+                }
+              : item
+          )
+        : [...state, { ...action.item, quantity: 1 }]; 
+		break;
+    case "DELETE_ITEM":
+      return state.find((item) => item.name === action.item.name)?.quantity ===
+        1
+        ? state.filter((item) => item.name !== action.item.name)
+        : state.map((item) =>
+            item.name === action.item.name
+              ? {
+                  ...item,
+                  quantity: item.quantity - 1
+                }
+              : item
+          );
 		break;
     case "DELETE":
       const newArr = [...state];

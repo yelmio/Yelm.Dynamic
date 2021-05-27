@@ -6,9 +6,11 @@ import axios from "axios"
 const ItemsCard = dynamic(() => import("../components/molecules/ItemsCard"))
 const Tabs = dynamic(() => import("../components/atoms/Tabs"))
 const Modal = dynamic(() => import("../components/atoms/Modal"))
+const Pagination = dynamic(() => import("../components/atoms/Pagination"))
 
 
 const Items = ({ items, error }) => { 
+	
 	const goods = items.map((item, key) =>
 		item.items
 	);
@@ -20,6 +22,7 @@ const Items = ({ items, error }) => {
   });
 
 	const [panel, setPanel] = useState(0)
+	const [page, setPage] = useState(1);
 
 	const updateData = (value) => {
 		setPanel(value)
@@ -39,6 +42,7 @@ const Items = ({ items, error }) => {
 						))
 					}
 				</div>
+				<Pagination value={page} range={33} onChange={setPage}/>
       </section>
       <Modal setShowModal={setShowModal} showModal={showModal}/>
 		</>
