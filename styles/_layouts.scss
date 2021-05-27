@@ -16,5 +16,14 @@ main {
   padding-left: 48px;
 }
 
+@media (max-width: 1440px){
+  .layout{
+    flex-direction: column;
+  }
+  main {
+    padding-left: 0;
+  }
+}
+
 
 

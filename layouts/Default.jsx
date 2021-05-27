@@ -1,17 +1,14 @@
 import dynamic from "next/dynamic"
 import { useState, useEffect, useContext } from "react";
-import { useCycle } from 'framer-motion';
 import { useRouter } from 'next/router'
 import AppContext from "../context/appProvider";
 const Navigation = dynamic(() => import("../components/molecules/Navigation"))
+const NavigationResp = dynamic(() => import("../components/molecules/NavigationResp"))
 const Cart = dynamic(() => import("../components/molecules/Cart"))
-const BurgerMenu = dynamic(() => import("../components/molecules/BurgerMenu"))
-
 
 const Default = ({children}) => {
   const size = useWindowSize();
   const appData = useContext(AppContext);
-  const [isOpen, toggleOpen] = useCycle(false, true);
   const router = useRouter();
 
   const style = {
@@ -22,10 +19,13 @@ const Default = ({children}) => {
 
   return (
     <div className="layout" style={style}>
-      <aside>
-        <Navigation />
-        {/* { size.width <= 1366 ? <BurgerMenu isOpen={isOpen} toggleOpen={toggleOpen} /> : <Navigation /> } */}
-      </aside>
+      { size.width <= 1440 ? 
+        <NavigationResp /> 
+        : 
+        <aside>
+          <Navigation />
+        </aside>
+      }
       <header>
         <Cart/>
       </header>

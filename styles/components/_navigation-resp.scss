@@ -1,0 +1,29 @@
+.navigation-resp{
+	&__list{
+		display: flex;
+		list-style: none;
+		max-width: 1070px;
+		padding-top: 54px;
+    margin: 0 auto;
+	}
+	&__item:not(:first-child){
+		padding-left: 40px;	
+	}
+	&__item{
+		a{
+			transition: all 0.5s;
+			opacity: 0.6;
+			color: $color-primary;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 17px;
+		}
+	}
+	@for $i from 0 through 5 {
+		.selected-#{$i} {
+			a{
+				opacity: 1;
+			}
+		}
+	}
+}

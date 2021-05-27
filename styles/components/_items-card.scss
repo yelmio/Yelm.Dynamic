@@ -21,3 +21,16 @@
 		padding-bottom: 17.39px;
 	}
 }
+
+@media (max-width: 1440px){
+  .items-card{
+		width: 250px;
+		height: 354px;
+		padding: 14px;
+		margin-right: 15px;
+		margin-bottom: 20px;
+		&__title{
+			font-size: 16px;
+		}
+	}
+}
